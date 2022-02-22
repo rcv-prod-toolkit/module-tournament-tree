@@ -1,8 +1,8 @@
 {
-  "name": "rcv-tournament-tree",
+  "name": "module-tournament-tree",
   "version": "1.0.0",
   "description": "Module that provides GFX elements for a tournament tree",
-  "author": "Himyu",
+  "author": "RCVolus",
   "license": "MIT",
   "toolkit": {
     "modes": [
@@ -13,10 +13,8 @@
     },
     "needsBuild": true
   },
-  "dependencies": {
-    "league-prod-toolkit": "file:../.."
-  },
   "devDependencies": {
+    "rcv-prod-toolkit-types": "^1.0.1",
     "typescript": "^4.3.2",
     "sass": "^1.34.1"
   },

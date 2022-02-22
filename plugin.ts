@@ -1,4 +1,4 @@
-import type { PluginContext } from 'league-prod-toolkit/core/modules/Module'
+import type { PluginContext } from 'rcv-prod-toolkit-types'
 import type { GfxState } from './types/GfxState'
 
 const namespace = 'rcv-tournament-tree';
