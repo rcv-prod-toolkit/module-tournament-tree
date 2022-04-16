@@ -1,8 +1,6 @@
 import type { PluginContext } from '@rcv-prod-toolkit/types'
 import type { GfxState } from './types/GfxState'
 
-const namespace = 'rcv-tournament-tree';
-
 const initialState : GfxState = {
   state: "NO_MATCHES",
   matches: [],
@@ -19,6 +17,8 @@ const gameMatrix : [number, number | null][] = [
 ]
 
 module.exports = async (ctx: PluginContext) => {
+  const namespace = ctx.plugin.module.getName();
+
   let gfxState = initialState;
 
   // Register new UI page
@@ -29,9 +29,9 @@ module.exports = async (ctx: PluginContext) => {
       version: 1
     },
     pages: [{
-      name: 'OP: rcv-tournament-tree',
+      name: 'Tournament Tree',
       frontend: 'frontend',
-      id : 'op-rcv-tournament-tree'
+      id : `op-${namespace}`
     }]
   });
 
@@ -59,7 +59,7 @@ module.exports = async (ctx: PluginContext) => {
         ctx.LPTE.emit({
           meta: {
             type: 'set',
-            namespace: 'rcv-teams',
+            namespace: 'module-teams',
             version: 1
           },
           teams: match.teams,

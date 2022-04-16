@@ -1,5 +1,6 @@
-function addCss(fileName) {
+const namespace = 'module-tournament-tree'
 
+function addCss(fileName) {
   var head = document.head;
   var link = document.createElement('link');
 
@@ -13,7 +14,7 @@ function addCss(fileName) {
 addCss('/pages/op-rcv-tournament-tree/style/tournament_tree_op.css');
 addCss('https://use.typekit.net/anc5qxp.css');
 
-$('#embed-copy').val(`${location.href}/tournament_tree-gfx.html`);
+$('#embed-copy').val(`${location.href}/tournament_tree-gfx.html${window.apiKey !== null ? '?apikey' + window.apiKey : ''}`);
 
 const dataDiv = document.querySelectorAll('[data-matchId]');
 const roundsSelect = document.querySelectorAll('[data-round]');
@@ -61,7 +62,7 @@ function save () {
 
   window.LPTE.emit({
     meta: {
-      namespace: 'rcv-tournament-tree',
+      namespace,
       type: 'set',
       version: 1
     },
@@ -73,7 +74,7 @@ function save () {
 function unset() {
   window.LPTE.emit({
     meta: {
-      namespace: 'rcv-tournament-tree',
+      namespace,
       type: 'unset',
       version: 1
     }
@@ -83,7 +84,7 @@ function unset() {
 async function init () {
   const data = await window.LPTE.request({
     meta: {
-      namespace: 'rcv-tournament-tree',
+      namespace,
       type: 'request',
       version: 1
     }
