@@ -11,8 +11,7 @@ function addCss(fileName) {
   head.appendChild(link)
 }
 
-addCss('/pages/op-rcv-tournament-tree/style/tournament_tree_op.css');
-addCss('https://use.typekit.net/anc5qxp.css');
+addCss('/pages/op-module-tournament-tree/style/tournament_tree_op.css');
 
 $('#embed-copy').val(`${location.href}/tournament_tree-gfx.html${window.apiKey !== null ? '?apikey' + window.apiKey : ''}`);
 
