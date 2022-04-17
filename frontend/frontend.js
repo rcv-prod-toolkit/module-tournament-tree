@@ -119,5 +119,5 @@ function displayData (data) {
 
 window.LPTE.onready(() => {
   init()
-  window.LPTE.on('rcv-tournament-tree', 'update', displayData);
+  window.LPTE.on(namespace, 'update', displayData);
 })

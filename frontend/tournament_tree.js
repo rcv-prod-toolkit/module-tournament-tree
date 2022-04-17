@@ -1,4 +1,5 @@
 const dataDiv = document.querySelectorAll('[data-matchId]');
+const namespace = 'module-tournament-tree'
 
 function displayData (data) {
   dataDiv.forEach(element => {
@@ -43,7 +44,7 @@ const resizeText = ( parent ) => {
 const init = async () => {
   const data = await window.LPTE.request({
     meta: {
-      namespace: 'rcv-tournament-tree',
+      namespace,
       type: 'request',
       version: 1
     }
@@ -54,5 +55,5 @@ const init = async () => {
 
 window.LPTE.onready(() => {
   init()
-  window.LPTE.on('rcv-tournament-tree', 'update', displayData);
+  window.LPTE.on(namespace, 'update', displayData);
 })
