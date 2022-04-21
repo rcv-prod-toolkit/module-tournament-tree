@@ -13,7 +13,7 @@ function addCss(fileName) {
 
 addCss('/pages/op-module-tournament-tree/style/tournament_tree_op.css');
 
-$('#embed-copy').val(`${location.href}/tournament_tree-gfx.html${window.apiKey !== null ? '?apikey' + window.apiKey : ''}`);
+$('#embed-copy').val(`${location.href}/tournament_tree-gfx.html${window.apiKey !== null ? '?apikey=' + window.apiKey : ''}`);
 
 const dataDiv = document.querySelectorAll('[data-matchId]');
 const roundsSelect = document.querySelectorAll('[data-round]');
