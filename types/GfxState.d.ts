@@ -7,7 +7,7 @@ export interface GfxState {
   }
   rounds: {
     [n: number]: {
-      bestOf: 1 | 3 | 5
+      bestOf: number
     }
   }
 }

@@ -6,6 +6,6 @@ export interface Match {
     blueTeam: Team
     redTeam: Team
   }
-  bestOf: 1 | 3 | 5
+  bestOf: number
   current_match: boolean
 }
