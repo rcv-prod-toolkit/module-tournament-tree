@@ -19,7 +19,7 @@
     "sass": "^1.34.1"
   },
   "scripts": {
-    "compile-sass": "sass frontend/style/tournament_tree.scss frontend/style/tournament_tree.css",
+    "compile-sass": "sass frontend/style/:frontend/style/",
     "watch-sass": "sass --watch frontend/style/:frontend/style/",
     "build": "npm run compile-sass && tsc"
   }
