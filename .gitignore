@@ -4,3 +4,5 @@ dist/
 core-build/
 cache/
 .DS_Store
+*.css
+*.css.map
