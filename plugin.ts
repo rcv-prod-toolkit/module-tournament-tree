@@ -1,25 +1,25 @@
 import type { PluginContext } from '@rcv-prod-toolkit/types'
 import type { GfxState } from './types/GfxState'
 
-const initialState : GfxState = {
-  state: "NO_MATCHES",
+const initialState: GfxState = {
+  state: 'NO_MATCHES',
   matches: [],
   rounds: {}
 }
 
-const gameMatrix : [number, number | null][] = [
+const gameMatrix: [number, number | null][] = [
   [4, null],
   [4, null],
   [5, null],
   [5, null],
   [6, 7],
-  [6, 7],
+  [6, 7]
 ]
 
 module.exports = async (ctx: PluginContext) => {
-  const namespace = ctx.plugin.module.getName();
+  const namespace = ctx.plugin.module.getName()
 
-  let gfxState = initialState;
+  let gfxState = initialState
 
   // Register new UI page
   ctx.LPTE.emit({
@@ -28,12 +28,14 @@ module.exports = async (ctx: PluginContext) => {
       namespace: 'ui',
       version: 1
     },
-    pages: [{
-      name: 'Tournament Tree',
-      frontend: 'frontend',
-      id : `op-${namespace}`
-    }]
-  });
+    pages: [
+      {
+        name: 'Tournament Tree',
+        frontend: 'frontend',
+        id: `op-${namespace}`
+      }
+    ]
+  })
 
   // Answer requests to get state
   ctx.LPTE.on(namespace, 'request', async (e: any) => {
@@ -46,11 +48,11 @@ module.exports = async (ctx: PluginContext) => {
       state: gfxState.state,
       matches: gfxState.matches,
       rounds: gfxState.rounds
-    });
-  });
+    })
+  })
 
   ctx.LPTE.on(namespace, 'set', async (e: any) => {
-    gfxState.state = 'READY';
+    gfxState.state = 'READY'
     gfxState.matches = [...e.matches]
     gfxState.rounds = e.rounds
 
@@ -64,7 +66,7 @@ module.exports = async (ctx: PluginContext) => {
           },
           teams: match.teams,
           bestOf: match.bestOf
-        });
+        })
       }
 
       if (match.matchId > 5) continue
@@ -142,11 +144,11 @@ module.exports = async (ctx: PluginContext) => {
       state: gfxState.state,
       matches: gfxState.matches,
       rounds: gfxState.rounds
-    });
-  });
+    })
+  })
 
   ctx.LPTE.on(namespace, 'unset', (e: any) => {
-    gfxState.state = 'NO_MATCHES';
+    gfxState.state = 'NO_MATCHES'
     gfxState.matches = []
     gfxState.rounds = {}
 
@@ -159,8 +161,8 @@ module.exports = async (ctx: PluginContext) => {
       state: gfxState.state,
       matches: gfxState.matches,
       rounds: gfxState.rounds
-    });
-  });
+    })
+  })
 
   // Emit event that we're ready to operate
   ctx.LPTE.emit({
@@ -170,5 +172,5 @@ module.exports = async (ctx: PluginContext) => {
       version: 1
     },
     status: 'RUNNING'
-  });
-};
+  })
+}
