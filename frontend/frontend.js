@@ -1,24 +1,5 @@
 const namespace = 'module-tournament-tree'
 
-function addCss(fileName) {
-  var head = document.head
-  var link = document.createElement('link')
-
-  link.type = 'text/css'
-  link.rel = 'stylesheet'
-  link.href = fileName
-
-  head.appendChild(link)
-}
-
-addCss('/pages/op-module-tournament-tree/style/tournament_tree_op.css')
-
-$('#embed-copy').val(
-  `${location.href}/tournament_tree-gfx.html${
-    window.apiKey !== null ? '?apikey=' + window.apiKey : ''
-  }`
-)
-
 const dataDiv = document.querySelectorAll('[data-matchId]')
 const roundsSelect = document.querySelectorAll('[data-round]')
 
@@ -89,6 +70,13 @@ function unset() {
 }
 
 async function init() {
+  const port =  await window.constants.getWebServerPort()
+  const location = `http://localhost:${port}/pages/op-module-tournament-tree`
+
+  const apiKey =  await window.constants.getApiKey()
+
+  document.querySelector('#embed-copy').value = `${location}/tournament_tree-gfx.html${apiKey !== null ? '?apikey=' + apiKey: ''}`
+
   const data = await window.LPTE.request({
     meta: {
       namespace,
