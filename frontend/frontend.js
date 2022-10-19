@@ -70,12 +70,16 @@ function unset() {
 }
 
 async function init() {
-  const port =  await window.constants.getWebServerPort()
-  const location = `http://localhost:${port}/pages/op-module-tournament-tree`
+  const server = await window.constants.getWebServerPort()
+  const location = `http://${server}/pages/op-module-tournament-tree`
 
-  const apiKey =  await window.constants.getApiKey()
+  const apiKey = await window.constants.getApiKey()
 
-  document.querySelector('#embed-copy').value = `${location}/tournament_tree-gfx.html${apiKey !== null ? '?apikey=' + apiKey: ''}`
+  document.querySelector(
+    '#embed-copy'
+  ).value = `${location}/tournament_tree-gfx.html${
+    apiKey !== null ? '?apikey=' + apiKey : ''
+  }`
 
   const data = await window.LPTE.request({
     meta: {
