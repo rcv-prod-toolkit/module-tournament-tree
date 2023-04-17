@@ -19,7 +19,7 @@
   "devDependencies": {
     "@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types",
     "typescript": "^5.0.4",
-    "sass": "^1.61.0"
+    "sass": "^1.62.0"
   },
   "scripts": {
     "compile-sass": "sass frontend/style/:frontend/style/",
