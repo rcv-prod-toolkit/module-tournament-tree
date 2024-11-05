@@ -70,8 +70,8 @@ function unset() {
 }
 
 async function init() {
-  const server = await window.constants.getWebServerPort()
-  const location = `http://${server}/pages/op-module-tournament-tree`
+  const server = await window.constants.getModuleURL()
+  const location = server
 
   const apiKey = await window.constants.getApiKey()
 
